@@ -12,12 +12,12 @@ data_files = [
 
 setup(
     name='batinfo',
-    version='0.1.1',
+    version='0.1.2',
     description="A simple Python lib to retreive battery information",
     author='Nicolas Hennion',
     author_email='nicolas@nicolargo.com',
     url='https://github.com/nicolargo/batinfo',
-    download_url='https://s3.amazonaws.com/batinfo/batinfo-0.1.1.tar.gz',
+    download_url='https://s3.amazonaws.com/batinfo/batinfo-0.1.2.tar.gz',
     license="LGPL",
     keywords="lib battery",
     packages=['batinfo'],
