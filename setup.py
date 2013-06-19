@@ -14,7 +14,6 @@ setup(
     name='batinfo',
     version='0.1.1',
     description="A simple Python lib to retreive battery information",
-    long_description=open('README.md').read(),
     author='Nicolas Hennion',
     author_email='nicolas@nicolargo.com',
     url='https://github.com/nicolargo/batinfo',
@@ -24,7 +23,6 @@ setup(
     packages=['batinfo'],
     include_package_data=True,
     data_files=data_files,
-    # entry_points={"console_scripts": ["batinfo=batinfo.batinfo:main"]},
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
