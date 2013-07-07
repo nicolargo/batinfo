@@ -38,9 +38,11 @@ class battery(object):
         self.__update__()
 
     def __str__(self):
+        self.__update__()
         return str(self.capacity)
 
     def __repr__(self):
+        self.__update__()
         return json.dumps(self, default=lambda o: o.__dict__)
 
     def __getattr__(self, stat):
@@ -87,13 +89,20 @@ class batteries(object):
     """
 
     def __init__(self, bat_root_path="/sys/class/power_supply"):
+        # Root path for batteries stats
+        self.bat_root_path = bat_root_path
+        # Update stat
+        self.update()
+
+    def update(self):
         # Init the batteries stat list
         self.stat = []
+        # and update it...
         # Find all the batteries in the bat_root_path folder
         # It's a battery if the file "type" exist
         # and contain "Battery"
-        for dirname in os.listdir(bat_root_path):
-            type_file = os.path.join(bat_root_path, dirname, "type")
+        for dirname in os.listdir(self.bat_root_path):
+            type_file = os.path.join(self.bat_root_path, dirname, "type")
             if (os.path.isfile(type_file)):
                 try:
                     with open(type_file, 'r') as f:
@@ -103,7 +112,7 @@ class batteries(object):
                 if (is_bat):
                     # It is a battery, let's add it to the list
                     # print("Add the battery %s to the list" % dirname)
-                    self.stat.append(battery(bat_root_path, dirname))
+                    self.stat.append(battery(self.bat_root_path, dirname))
 
     def __len__(self):
         return len(self.stat)

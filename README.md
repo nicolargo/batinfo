@@ -27,5 +27,7 @@ A simple example says better than words:
     Out[11]: 5800000
     In [12]: bat.stat[0].charge_now
     Out[12]: 3900000
+    In [12]: bat.update()
+    > Refresh the stats
 
 Have fun...
