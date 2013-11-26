@@ -42,6 +42,7 @@ class battery(object):
         try:
             self.capacity
         except:
+            # Patch if capacity did not exist (issue #2)
             try:
                 self.charge_full
                 self.charge_now
