@@ -35,11 +35,22 @@ class battery(object):
     def __init__(self, path="/sys/class/power_supply", name="BAT0"):
         self.path = os.path.join(path, name)
         self.name = name
-        self.__update__()
+        self.__update__()          
 
     def __str__(self):
         self.__update__()
-        return str(self.capacity)
+        try:
+            self.capacity
+        except:
+            try:
+                self.charge_full
+                self.charge_now
+            except:
+                return ""
+            else:
+                return str(self.charge_now*100/self.charge_full)
+        else:
+            return str(self.capacity)
 
     def __repr__(self):
         self.__update__()

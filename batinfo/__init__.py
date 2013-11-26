@@ -20,10 +20,10 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 __appname__ = "batinfo"
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 __author__ = "Nicolas Hennion <nicolas@nicolargo.com>"
 __licence__ = "LGPL"
 
-__all__ = ['batteries']
+__all__ = ['batteries', 'battery']
 
 from battery import battery, batteries
