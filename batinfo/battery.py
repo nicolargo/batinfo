@@ -61,7 +61,7 @@ class battery(object):
         """
         Catch message if attribute did not exist
         """
-        log.critical("Attribute %s did not exist" % stat)
+        # log.critical("Attribute %s did not exist" % stat)
         return ""
 
     def __get_stat__(self, stat):
