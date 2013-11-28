@@ -39,19 +39,10 @@ class battery(object):
 
     def __str__(self):
         self.__update__()
-        try:
-            self.capacity
-        except:
-            # Patch if capacity did not exist (issue #2)
-            try:
-                self.charge_full
-                self.charge_now
-            except:
-                return ""
-            else:
-                return str(self.charge_now*100/self.charge_full)
-        else:
+        if 'capacity' in repr(self):
             return str(self.capacity)
+        else:
+            return ""
 
     def __repr__(self):
         self.__update__()
@@ -61,7 +52,7 @@ class battery(object):
         """
         Catch message if attribute did not exist
         """
-        # log.critical("Attribute %s did not exist" % stat)
+        log.critical("Attribute %s did not exist" % stat)
         return ""
 
     def __get_stat__(self, stat):
@@ -83,7 +74,7 @@ class battery(object):
         stats = [f for f in os.listdir(self.path)
                  if os.path.isfile(os.path.join(self.path, f))]
         for stat in stats:
-            # print("%s = %s" % (stat, self.__get_stat__(stat)))
+            #~ print("%s = %s" % (stat, self.__get_stat__(stat)))
             value = self.__get_stat__(stat)
             try:
                 # Try to convert to integer
@@ -92,6 +83,10 @@ class battery(object):
                 # Not possible, not a problem
                 pass
             setattr(self, stat, value)
+        if ('capacity' not in stats and 'charge_full' in stats
+        and 'charge_now' in stats) :
+            value = self.charge_now*100/self.charge_full
+            setattr(self, 'capacity', value)
 
 
 class batteries(object):
