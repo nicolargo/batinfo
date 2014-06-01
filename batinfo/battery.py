@@ -25,7 +25,7 @@ import json
 
 logging.basicConfig()
 log = logging.getLogger(__name__)
-
+log.setLevel(logging.CRITICAL)
 
 class battery(object):
     """
@@ -52,7 +52,7 @@ class battery(object):
         """
         Catch message if attribute did not exist
         """
-        log.critical("Attribute %s did not exist" % stat)
+        log.error("Attribute %s did not exist" % stat)
         return ""
 
     def __get_stat__(self, stat):
@@ -63,7 +63,7 @@ class battery(object):
             with open(os.path.join(self.path, stat), 'r') as f:
                 return f.read().strip()
         except Exception:
-            log.critical("Can not read file %s" % stat)
+            log.error("Can not read file %s" % stat)
             return ""
 
     def __update__(self):
@@ -115,7 +115,7 @@ class batteries(object):
                     with open(type_file, 'r') as f:
                         is_bat = (f.read().strip() == "Battery")
                 except Exception:
-                    log.critical("Can not read file %s" % type_file)
+                    log.error("Can not read file %s" % type_file)
                 if (is_bat):
                     # It is a battery, let's add it to the list
                     # print("Add the battery %s to the list" % dirname)
