@@ -4,7 +4,7 @@
 # BatInfo
 # A simple Python lib to retreive battery information
 #
-# Copyright (C) 2013 Nicolargo <nicolas@nicolargo.com>
+# Copyright (C) 2014 Nicolargo <nicolas@nicolargo.com>
 #
 # BatInfo is free software; you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -20,10 +20,10 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 __appname__ = "batinfo"
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 __author__ = "Nicolas Hennion <nicolas@nicolargo.com>"
 __licence__ = "LGPL"
 
 __all__ = ['batteries', 'battery']
 
-from battery import battery, batteries
+from batinfo.battery import battery, batteries

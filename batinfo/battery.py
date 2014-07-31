@@ -4,7 +4,7 @@
 # Batinfo
 # A simple Python lib to retreive battery information
 #
-# Copyright (C) 2013 Nicolargo <nicolas@nicolargo.com>
+# Copyright (C) 2014 Nicolargo <nicolas@nicolargo.com>
 #
 # BatInfo is free software; you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -99,6 +99,7 @@ class batteries(object):
         # Root path for batteries stats
         self.bat_root_path = bat_root_path
         # Update stat
+        self.stat = []
         self.update()
 
     def update(self):
