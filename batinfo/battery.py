@@ -63,7 +63,7 @@ class battery(object):
             with open(os.path.join(self.path, stat), 'r') as f:
                 return f.read().strip()
         except Exception:
-            log.error("Can not read file %s" % stat)
+            # log.error("Can not read file %s" % stat)
             return ""
 
     def __update__(self):

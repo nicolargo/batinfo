@@ -1,3 +1,4 @@
+* version 0.2 - No log on read file
 * version 0.1.9 - Correct an import issue with Python 3
 * Set log level to CRITICAL (by Nicolargo)
 * Merge pull request #3 from webplate/master (by Nicolas Hennion)
