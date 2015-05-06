@@ -128,5 +128,4 @@ class Batteries(object):
         return len(self.stat)
 
     def __iter__(self):
-        for bat in self.stat:
-            yield bat
+        return iter(self.stat)
