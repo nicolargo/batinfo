@@ -19,15 +19,16 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-import os
-import logging
 import json
+import logging
+import os
 
 logging.basicConfig()
 log = logging.getLogger(__name__)
 log.setLevel(logging.CRITICAL)
 
-class battery(object):
+
+class Battery(object):
     """
     Battery stats
     """
@@ -35,7 +36,7 @@ class battery(object):
     def __init__(self, path="/sys/class/power_supply", name="BAT0"):
         self.path = os.path.join(path, name)
         self.name = name
-        self.__update__()          
+        self.__update__()
 
     def __str__(self):
         self.__update__()
@@ -74,7 +75,7 @@ class battery(object):
         stats = [f for f in os.listdir(self.path)
                  if os.path.isfile(os.path.join(self.path, f))]
         for stat in stats:
-            #~ print("%s = %s" % (stat, self.__get_stat__(stat)))
+            # ~ print("%s = %s" % (stat, self.__get_stat__(stat)))
             value = self.__get_stat__(stat)
             try:
                 # Try to convert to integer
@@ -83,13 +84,14 @@ class battery(object):
                 # Not possible, not a problem
                 pass
             setattr(self, stat, value)
-        if ('capacity' not in stats and 'charge_full' in stats
-        and 'charge_now' in stats) :
+        if ('capacity' not in stats and
+                'charge_full' in stats and
+                'charge_now' in stats):
             value = self.charge_now*100/self.charge_full
             setattr(self, 'capacity', value)
 
 
-class batteries(object):
+class Batteries(object):
     """
     Class to retreive stats of all the batteries
     List of battery (class)
@@ -120,7 +122,7 @@ class batteries(object):
                 if (is_bat):
                     # It is a battery, let's add it to the list
                     # print("Add the battery %s to the list" % dirname)
-                    self.stat.append(battery(self.bat_root_path, dirname))
+                    self.stat.append(Battery(self.bat_root_path, dirname))
 
     def __len__(self):
         return len(self.stat)
