@@ -19,14 +19,14 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-from batinfo import batteries
+from batinfo import Batteries
 import unittest
 
 
 class TestBatInfo(unittest.TestCase):
 
     def setUp(self):
-        self.bat = batteries(bat_root_path="./test")
+        self.bat = Batteries(bat_root_path="./test")
 
     def test_BatInfo_get(self):
         self.assertTrue(len(self.bat) == 2)

@@ -24,6 +24,10 @@ __version__ = "0.2"
 __author__ = "Nicolas Hennion <nicolas@nicolargo.com>"
 __licence__ = "LGPL"
 
-__all__ = ['batteries', 'battery']
+__all__ = ['batteries', 'battery', 'Batteries', 'Battery']
 
-from batinfo.battery import battery, batteries
+from batinfo.battery import Battery, Batteries
+
+# Let the old names for compatibility
+battery = Battery
+batteries = Batteries
