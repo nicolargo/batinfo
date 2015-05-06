@@ -28,23 +28,30 @@ class TestBatInfo(unittest.TestCase):
     def setUp(self):
         self.bat = Batteries(bat_root_path="./test")
 
-    def test_BatInfo_get(self):
+    def test_batinfo_get(self):
         self.assertTrue(len(self.bat) == 2)
 
-    def test_BatInfo_name_default(self):
+    def test_batinfo_name_default(self):
         # print("Battery name: %s" % self.bat.stat().name)
         self.assertTrue(type(self.bat.stat[0].name) == str)
         self.assertTrue(self.bat.stat[0].name == "battery")
 
-    def test_BatInfo_capacity(self):
+    def test_batinfo_capacity(self):
         # print("Battery capacity: %s" % self.bat.stat().capacity)
         self.assertTrue(type(self.bat.stat[0].capacity) == int)
         self.assertTrue(self.bat.stat[0].capacity == 53)
 
-    def test_BatInfo_charge_now(self):
+    def test_batinfo_charge_now(self):
         # print("Battery 2 charge_now: %s" % self.bat.stat().charge_now)
         self.assertTrue(type(self.bat.stat[1].charge_now) == int)
         self.assertTrue(self.bat.stat[1].charge_now == 1972000)
+
+    def test_the_batteries_api_is_iterable(self):
+        batteries_count = 0
+        for bat in self.bat:
+            batteries_count += 1
+        self.assertEquals(batteries_count, 2)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -126,3 +126,6 @@ class Batteries(object):
 
     def __len__(self):
         return len(self.stat)
+
+    def __iter__(self):
+        return iter(self.stat)
