@@ -12,7 +12,7 @@ data_files = [
 
 setup(
     name='batinfo',
-    version='0.2',
+    version='0.3',
     description="A simple Python lib to retreive battery information",
     author='Nicolas Hennion',
     author_email='nicolas@nicolargo.com',
