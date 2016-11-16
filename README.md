@@ -1,11 +1,11 @@
 BatInfo
 =======
 
-Is a simple Python lib to retreive battery information on Linux based operating system.
+A simple Python module to retrieve battery information on Linux-based operating system.
 No ACPI or external software is needed.
-Only the Linux kernel and its /sys/class/power_supply folder.
+Only the Linux kernel and its `/sys/class/power_supply` folder.
 
-A simple example says better than words:
+A simple example says more than thousand words:
 
     In [1]: import batinfo
     In [2]: bat = batinfo.Batteries()
