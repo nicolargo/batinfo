@@ -7,7 +7,7 @@
 from setuptools import setup
 
 data_files = [
-    ('share/doc/batinfo', ['AUTHORS', 'README.md'])
+    ('share/doc/batinfo', ['AUTHORS', 'README.md', 'LICENSE'])
 ]
 
 setup(
@@ -18,7 +18,7 @@ setup(
     author_email='nicolas@nicolargo.com',
     url='https://github.com/nicolargo/batinfo',
     #download_url='https://s3.amazonaws.com/batinfo/batinfo-0.2.tar.gz',
-    license="LGPL",
+    license="LGPLv3",
     keywords="lib battery",
     packages=['batinfo'],
     include_package_data=True,
