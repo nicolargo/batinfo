@@ -1,8 +1,7 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # Batinfo
-# A simple Python lib to retreive battery information
+# A simple Python lib to retrieve battery information
 #
 # Copyright (C) 2014 Nicolargo <nicolas@nicolargo.com>
 #

@@ -1,8 +1,7 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # BatInfo
-# A simple Python lib to retreive battery information
+# A simple Python lib to retrieve battery information
 #
 # Copyright (C) 2014 Nicolargo <nicolas@nicolargo.com>
 #
@@ -22,7 +21,7 @@
 __appname__ = "batinfo"
 __version__ = "0.3"
 __author__ = "Nicolas Hennion <nicolas@nicolargo.com>"
-__licence__ = "LGPL"
+__licence__ = "LGPLv3"
 
 __all__ = ['batteries', 'battery', 'Batteries', 'Battery']
 
