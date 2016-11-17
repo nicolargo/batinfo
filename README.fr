@@ -1,0 +1,57 @@
+BatInfo
+=======
+
+Je souhaitais ajouter dans Glances un plugin permettant de superviser l'état des batteries. J'ai donc commencé à chercher une librairie Python permettant de s'acquiter le plus simplement possible de cette tache qui sous un système GNU/Linux consiste à analyser le répertoire /sys/class/power_supply maintenu à jour par le noyau Linux.
+Comme je n'ai pas trouvé mon bonheur, j'ai donc décidé de développer un librairie Python: BatInfo.
+
+Les sources de cette librairie sont disponible sur Github en licence LGPL. L'installation sur votre système peut se faire simplement via la librairie Pypi:
+
+    sudo pip install batinfo
+
+L'utilisation de la librairie dans vos développement Python est la suivante:
+
+On commence par inclure la librairie:
+
+    import batinfo
+
+Puis on créé une instance (bat) de la classe principale (batteries):
+
+    bat = batinfo.Batteries()
+
+On peut récupérer les données brutes (format JSON) en utilisant:
+
+    bat.stat
+    [{"status": "Full", "capacity": 50, "name": "CMB1", "uevent": "POWER_SUPPLY_NAME=CMB1\nPOWER_SUPPLY_STATUS=Full\nPOWER_SUPPLY_PRESENT=1\nPOWER_SUPPLY_TECHNOLOGY=Li-ion\nPOWER_SUPPLY_CYCLE_COUNT=0\nPOWER_SUPPLY_VOLTAGE_MIN_DESIGN=10800000\nPOWER_SUPPLY_VOLTAGE_NOW=12496000\nPOWER_SUPPLY_CURRENT_NOW=0\nPOWER_SUPPLY_CHARGE_FULL_DESIGN=5800000\nPOWER_SUPPLY_CHARGE_FULL=5800000\nPOWER_SUPPLY_CHARGE_NOW=3900000\nPOWER_SUPPLY_CAPACITY=100\nPOWER_SUPPLY_MODEL_NAME=CP293550-01\nPOWER_SUPPLY_MANUFACTURER=Fujitsu\nPOWER_SUPPLY_SERIAL_NUMBER=01A-Z100320001158Z", "alarm": 0, "charge_full": 5800000, "voltage_now": 12496000, "serial_number": "01A-Z100320001158Z", "cycle_count": 0, "current_now": 0, "charge_now": 3900000, "voltage_min_design": 10800000, "path": "/sys/class/power_supply/CMB1", "technology": "Li-ion", "manufacturer": "Fujitsu", "type": "Battery", "model_name": "CP293550-01", "present": 1, "charge_full_design": 5800000}]
+
+Les données brutes se présentent sous la forme d'une liste de dictionnaire (un dictionnaire par batterie présente sur votre système). Comme la plupart du temps les machines (portable) ont une seule batterie, on peut avoir le dictionnaire associé à cette première batterie avec:
+
+    bat.stat[0]
+    {"status": "Full", "capacity": 100, "name": "CMB1", "uevent": "POWER_SUPPLY_NAME=CMB1\nPOWER_SUPPLY_STATUS=Full\nPOWER_SUPPLY_PRESENT=1\nPOWER_SUPPLY_TECHNOLOGY=Li-ion\nPOWER_SUPPLY_CYCLE_COUNT=0\nPOWER_SUPPLY_VOLTAGE_MIN_DESIGN=10800000\nPOWER_SUPPLY_VOLTAGE_NOW=12496000\nPOWER_SUPPLY_CURRENT_NOW=0\nPOWER_SUPPLY_CHARGE_FULL_DESIGN=5800000\nPOWER_SUPPLY_CHARGE_FULL=5800000\nPOWER_SUPPLY_CHARGE_NOW=3900000\nPOWER_SUPPLY_CAPACITY=100\nPOWER_SUPPLY_MODEL_NAME=CP293550-01\nPOWER_SUPPLY_MANUFACTURER=Fujitsu\nPOWER_SUPPLY_SERIAL_NUMBER=01A-Z100320001158Z", "alarm": 0, "charge_full": 5800000, "voltage_now": 12496000, "serial_number": "01A-Z100320001158Z", "cycle_count": 0, "current_now": 0, "charge_now": 3900000, "voltage_min_design": 10800000, "path": "/sys/class/power_supply/CMB1", "technology": "Li-ion", "manufacturer": "Fujitsu", "type": "Battery", "model_name": "CP293550-01", "present": 1, "charge_full_design": 5800000}
+
+Les statistiques présentes dans le dictionnaire dépende de votre batterie. Mais on retrouve un certain nombre d'informations génériques comme par exemple la capacité restante (en %):
+
+    bat.stat[0].capacity
+    50
+
+la capacité maximale:
+
+    bat.stat[0].charge_full
+    5800000
+
+ou encore la capacité courante:
+
+    bat.stat[0].charge_now
+    3900000
+
+On peut aussi avoir des informations constructeurs:
+
+    bat.stat[0].manufacturer
+    'Fujitsu'
+    bat.stat[0].technology
+    'Li-ion'
+
+Pour mettre à jour les stats:
+
+    bat.update()
+
+En espérant que cette librairie soit utile à certains. Il ne me reste plus, pour ma part, qu'à intégrer cela dans Glances.

@@ -7,17 +7,16 @@
 from setuptools import setup
 
 data_files = [
-    ('share/doc/batinfo', ['AUTHORS', 'README.md', 'LICENSE'])
+    ('share/doc/batinfo', ['AUTHORS', 'README.md', 'README.fr', 'LICENSE'])
 ]
 
 setup(
     name='batinfo',
-    version='0.3',
+    version='0.4',
     description="A simple Python module to retrieve battery information",
     author='Nicolas Hennion',
     author_email='nicolas@nicolargo.com',
     url='https://github.com/nicolargo/batinfo',
-    #download_url='https://s3.amazonaws.com/batinfo/batinfo-0.2.tar.gz',
     license="LGPLv3",
     keywords="lib battery",
     packages=['batinfo'],
