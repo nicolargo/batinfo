@@ -7,12 +7,12 @@
 from setuptools import setup
 
 data_files = [
-    ('share/doc/batinfo', ['AUTHORS', 'README.md', 'README.fr', 'LICENSE'])
+    ('share/doc/batinfo', ['AUTHORS', 'README.md', 'LICENSE'])
 ]
 
 setup(
     name='batinfo',
-    version='0.4',
+    version='0.4.1',
     description="A simple Python module to retrieve battery information",
     author='Nicolas Hennion',
     author_email='nicolas@nicolargo.com',
