@@ -6,13 +6,17 @@
 
 from setuptools import setup
 
-data_files = [
-    ('share/doc/batinfo', ['AUTHORS', 'README.md', 'LICENSE'])
-]
+
+def get_data_files():
+    data_files = [
+        ('share/doc/batinfo', ['AUTHORS', 'README.md', 'LICENSE'])
+    ]
+
+    return data_files
 
 setup(
     name='batinfo',
-    version='0.4.1',
+    version='0.4.2',
     description="A simple Python module to retrieve battery information",
     author='Nicolas Hennion',
     author_email='nicolas@nicolargo.com',
@@ -21,7 +25,7 @@ setup(
     keywords="lib battery",
     packages=['batinfo'],
     include_package_data=True,
-    data_files=data_files,
+    data_files=get_data_files(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
