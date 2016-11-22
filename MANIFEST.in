@@ -1,3 +1,5 @@
 include AUTHORS
 include README.md
 include LICENSE
+include test_batinfo.py
+recursive-include test *
