@@ -26,6 +26,8 @@ logging.basicConfig()
 log = logging.getLogger(__name__)
 log.setLevel(logging.CRITICAL)
 
+SMAPI = '/sys/devices/platform/smapi'
+
 
 class Battery(object):
     """
@@ -60,6 +62,10 @@ class Battery(object):
         Read stat from the Linux kernel
         """
         try:
+            # Check for thinkpad smapi (cycle count)
+            f = '%s/%s/cycle_count' % (SMAPI, self.name)
+            if 'cycle_count' in stat and os.path.isfile(f):
+                return open(f).read().strip()
             with open(os.path.join(self.path, stat), 'r') as f:
                 return f.read().strip()
         except Exception:
